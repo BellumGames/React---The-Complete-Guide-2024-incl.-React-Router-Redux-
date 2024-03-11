@@ -1,11 +1,9 @@
 
-export default function TabButton({ children }) {
-    function handleClick() {
-        console.log("Hello world!");
-    }
+export default function TabButton({ children, onSelect }) {
+    console.log("TABBUTTON COMPONENT EXECUTING");
 
     return (
-        <li><button onClick={handleClick}>{children}</button></li>
+        <li><button onClick={onSelect}>{children}</button></li>
     );
 }
 
@@ -22,4 +20,6 @@ export default function Card({ name, children }) {
         </article>
     );
 }
+
+// From tests before
 */
