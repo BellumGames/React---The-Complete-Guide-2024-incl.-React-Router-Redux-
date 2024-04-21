@@ -3,11 +3,12 @@ import { useState } from "react";
 // import componentsImg from "./assets/components.png";
 import { Header } from "./components/Header/Header.jsx";
 import { CORE_CONCEPTS } from "./data.js";
+import { EXAMPLES } from "./data.js";
 import { CoreConcept } from "./components/CoreConcept.jsx";
 import TabButton from "./components/TabButton.jsx";
 
 function App() {
-  const [ selectedTopic, setSelectedTopic ] = useState('Please click a button');
+  const [ selectedTopic, setSelectedTopic ] = useState('components');
 
   function handleSelect(selectedButton) {
     // selectedButton => 'components', 'jsx', 'props', 'state'
@@ -15,6 +16,24 @@ function App() {
     console.log(selectedTopic);
   }
 
+  {/* tabContent alternative for selected tab*/}
+  {/*let tabContent = <p>Please select a topic.</p>;
+
+  if(selectedTopic){
+    tabContent = (
+      <div id="tab-content">
+        <h3>{EXAMPLES[selectedTopic].title}</h3>
+        <p>{EXAMPLES[selectedTopic].description}</p>
+        <pre>
+          <code>
+            {EXAMPLES[selectedTopic].code}
+          </code>
+        </pre>
+      </div> 
+    );
+  }
+  */}
+  
   console.log("APP COMPONENT EXECUTING");
 
   return (
@@ -44,7 +63,32 @@ function App() {
           <TabButton onSelect={() => handleSelect('props')}>Props</TabButton>
           <TabButton onSelect={() => handleSelect('state')}>State</TabButton>
         </menu>
-        {selectedTopic}
+        {/*Following code is the alternative with logical AND &&*/}
+        {/*!selectedTopic && <p>Please select a topic.</p>*/}
+        {/*!selectedTopic && (
+          <div id="tab-content">
+          <h3>{EXAMPLES[selectedTopic].title}</h3>
+          <p>{EXAMPLES[selectedTopic].description}</p>
+          <pre>
+            <code>
+              {EXAMPLES[selectedTopic].code}
+            </code>
+          </pre>
+          </div>
+        )*/}
+        {/*Following code is the alternative tabContent variable*/}
+        {/*tabContent*/}
+        {!selectedTopic ? <p>Please select a topic.</p> : (
+          <div id="tab-content">
+            <h3>{EXAMPLES[selectedTopic].title}</h3>
+            <p>{EXAMPLES[selectedTopic].description}</p>
+            <pre>
+              <code>
+                {EXAMPLES[selectedTopic].code}
+              </code>
+            </pre>
+          </div> 
+        )}
       </section>
     </div>
   );
