@@ -1,9 +1,9 @@
 
-export default function TabButton({ children, onSelect }) {
+export default function TabButton({ children, onSelect, isSelected }) {
     console.log("TABBUTTON COMPONENT EXECUTING");
 
     return (
-        <li><button onClick={onSelect}>{children}</button></li>
+        <li><button className={isSelected ? 'active' : undefined} onClick={onSelect}>{children}</button></li>
     );
 }
 
@@ -92,4 +92,24 @@ export default function App() {
       </div>    
     );
 }
+
+import React from 'react';
+
+// don't change the Component name "App"
+
+export default function App() {
+    const [isSelected, SetIsSelected] = React.useState("");
+    
+    function OnSelect(){
+        SetIsSelected("Something different");
+    }
+    
+    return (
+        <div>
+            <p className={isSelected ? 'active' : undefined}>Style me!</p>
+            <button onClick={OnSelect}>Toggle style</button>
+        </div>
+    );
+}
+
 */
